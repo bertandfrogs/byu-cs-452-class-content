@@ -61,25 +61,25 @@ def getChatGptResponse(content):
 
 
 # strategies
-commonSqlOnlyRequest = " Give me a sqlite select statement that answers the question. Only respond with sqlite syntax. If there is an error do not expalin it!"
+commonSqlOnlyRequest = " Give me a sqlite select statement that answers the question. Only respond with sqlite syntax. If there is an error do not explain it!"
 strategies = {
     "zero_shot": setupSqlScript + commonSqlOnlyRequest,
-    "single_domain_double_shot": (setupSqlScript +
-                   " Who doesn't have a way for us to text them? " +
-                   " \nSELECT p.person_id, p.name\nFROM person p\nLEFT JOIN phone ph ON p.person_id = ph.person_id AND ph.can_recieve_sms = 1\nWHERE ph.phone_id IS NULL;\n " +
-                   commonSqlOnlyRequest)
+    # "single_domain_double_shot": (setupSqlScript +
+    #                " Who doesn't have a way for us to text them? " +
+    #                " \nSELECT p.person_id, p.name\nFROM person p\nLEFT JOIN phone ph ON p.person_id = ph.person_id AND ph.can_recieve_sms = 1\nWHERE ph.phone_id IS NULL;\n " +
+    #                commonSqlOnlyRequest)
 }
 
 questions = [
-    "Which are the most awarded dogs?",
-    "Which dogs have multiple owners?",
-    "Which people have multiple dogs?",
-    "What are the top 3 cities represented?",
-    "What are the names and cities of the dogs who have awards?",
-    "Who has more than one phone number?",
-    "Who doesn't have a way for us to text them?",
-    "Will we have a problem texting any of the previous award winners?"
-    # "I need insert sql into my tables can you provide good unique data?"
+    "Which birds have been observed the most?",
+    "Which location has the most observations?",
+    "How many birds are missing photo and audio recordings?",
+    "Which birds have been observed in at least two regions?",
+    "Are there any birds that have been observed in three regions?",
+    "Which user has the most observations outside of their own region?",
+    "Which birds in the database have not been observed?",
+    "Which users have uploaded photos or audio recordings in their observations?",
+    "Is there one family that is observed more than others?"
 ]
 
 def sanitizeForJustSql(value):
