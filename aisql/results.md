@@ -9,17 +9,18 @@ I love birds, and lately have been birdwatching a lot. There's a great platform 
 ### ```Which user has the most observations outside of their own region?```
 - Query:
 ```sql
-SELECT u.username, COUNT(o.obs_id) AS observation_count
-FROM Observation o
-JOIN User u ON o.user_id = u.user_id
-JOIN Location l ON o.location_id = l.location_id
-WHERE u.region_id IS NULL OR u.region_id <> l.region_id
-GROUP BY u.user_id
-ORDER BY observation_count DESC
-LIMIT 1;
+WITH topfive AS (
+  SELECT * FROM segment
+  WHERE segment.id != '267:476'
+  ORDER BY embedding <-> (SELECT embedding from segment where id = '267:476')
+  LIMIT 5
+)
+SELECT podcast.title, topfive.id, content, start_time, end_time, embedding <-> (SELECT embedding from segment where topfive.id = '267:476') AS distance
+FROM topfive
+JOIN podcast ON topfive.podcast_id = podcast.id
+ORDER BY embedding <-> (SELECT embedding from segment where segment.id = '267:476');
 ```
-- Raw Response: ```[('crane.craig12', 4)]```
-- Friendly Response: ```crane.craig12 has the most observations outside their region, with 4.```
+- Response: ```[('crane.craig12', 4)]```
 
 ## Unsuccessful Result
 ### ```How many birds are missing photo and audio recordings?```

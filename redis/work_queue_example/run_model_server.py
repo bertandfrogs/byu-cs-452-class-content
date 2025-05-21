@@ -24,13 +24,14 @@ def classify_process():
 	model = ResNet50(weights="imagenet")
 	print("* Model loaded")
 
-	# continually pool for new images to classify
+	# continually poll for new images to classify
 	while True:
 		# attempt to grab a batch of images from the database, then
 		# initialize the image IDs and batch of images themselves
 		queue = db.lrange(settings.IMAGE_QUEUE, 0, settings.BATCH_SIZE - 1)
 		imageIDs = []
 		batch = None
+		item = db.lpop(settings.IMAGE_QUEUE, )
 
 		# loop over the queue
 		for q in queue:

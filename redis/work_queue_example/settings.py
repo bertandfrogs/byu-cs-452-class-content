@@ -1,7 +1,7 @@
 # initialize Redis connection settings
-REDIS_HOST = "somethinglikethis.c1.asia-northeast1-1.gce.cloud.redislabs.com"
-REDIS_PORT = 17561 # <-- likely need to change this too!
-REDIS_PASSWORD = "DFDSKLFEI some password LKDJFLSDKFJD"
+REDIS_HOST = "redis-15105.c16.us-east-1-2.ec2.redns.redis-cloud.com"
+REDIS_PORT = 15105
+REDIS_PASSWORD = "q0pD82dV4T2a643Zw8tnba0RR4rAEV3P"
 REDIS_DB = 0
 
 # initialize constants used to control image spatial dimensions and

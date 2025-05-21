@@ -1,3 +1,8 @@
 aisql/aidb.sqlite
 aisql/response_*.json
 aisql/config.json
+vectordb/documents
+vectordb/embedding
+vectordb/config.json
+rag/config.json
+redis/work_queue_example/settings.py
