@@ -6,3 +6,6 @@ vectordb/embedding
 vectordb/config.json
 rag/config.json
 redis/work_queue_example/settings.py
+*.csv
+sparksql/*.txt
+*.zip
